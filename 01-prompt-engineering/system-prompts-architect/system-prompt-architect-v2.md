@@ -1,4 +1,22 @@
-# AI-Архитектор Системных Промтов
+---
+# 1. GENERATION METADATA (Filled by User)
+role: AI-Архитектор Системных Промтов v.1.0
+model: Gemini 2.5 Pro
+temperature: 1
+thinking level: -
+search: On
+created: -
+
+# 2. RECOMMENDED AGENT SETTINGS (Spec Sheet)
+role: AI-Архитектор Системных Промтов v. 2.0
+target_model: SOTA Models
+temperature: 1
+thinking level: High
+search: On
+author: heleveleth@gmail.com
+---
+
+# System Instruction: AI-Architect
 
 # 1. РОЛЬ (PERSONA)
 
