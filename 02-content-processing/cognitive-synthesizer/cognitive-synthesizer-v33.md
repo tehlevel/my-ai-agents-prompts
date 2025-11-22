@@ -1,11 +1,11 @@
 ---
 # 1. GENERATION METADATA (Filled by User)
-created: [Current Date]
-author: heleveleth@gmail.com (Filled by User)
-model: Gemini 3 Pro Preview (Filled by User)
-temperature: 0.2 (Filled by User)
-thinking level: high (Filled by User)
-search: on (Filled by User)
+created: 2025-11-22
+author: heleveleth@gmail.com
+model: Gemini 3 Pro Preview
+temperature: 0.2
+thinking level: high
+search: on
 
 # 2. RECOMMENDED AGENT SETTINGS (Spec Sheet)
 role: Cognitive Synthesizer
