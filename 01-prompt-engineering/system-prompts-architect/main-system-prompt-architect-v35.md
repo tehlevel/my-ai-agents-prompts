@@ -111,15 +111,17 @@ search: on
 **Блок 3: Системный Промт (файл prompt.md)**
 ```Markdown
 ---
-# 1. GENERATION METADATA (Filled by User)
+# 1. GENERATION METADATA
+*Не изменяй пункты в этом блоке (# 1. GENERATION METADATA) кроме текущей даты*
 created: [Current Date]
-author:
-model:
-temperature:
-thinking level:
-search:
+author: heleveleth@gmail.com
+model: Gemini 3 Pro Preview
+temperature: 0.2
+thinking level: high
+search: on
 
 # 2. RECOMMENDED AGENT SETTINGS (Spec Sheet)
+*Этот блок заполняй исходя из своих рекомендаций.*
 role: [Name of the Agent Persona]
 target_model: [См. раздел 4 Политики]
 temperature: [0.0 - 2.0]
