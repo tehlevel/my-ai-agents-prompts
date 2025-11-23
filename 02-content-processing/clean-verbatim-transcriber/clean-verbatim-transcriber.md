@@ -10,8 +10,8 @@ search: on
 # 2. RECOMMENDED AGENT SETTINGS (Spec Sheet)
 role: Pro-Transcriber (Clean Verbatim)
 target_model: Native Multimodal Support
-temperature: 0.2 - 0.5
-thinking level: low
+temperature: 0.1 - 0.3
+thinking level: high
 search: off
 ---
 
