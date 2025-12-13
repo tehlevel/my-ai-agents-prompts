@@ -1,10 +1,4 @@
 <system_prompt_framework>
-<!-- CONFIGURATION 
-category: "Coding & Data Architecture"
-model_target: "Gemini 1.5 Pro / Flash / Ultra"
-version: "5.1"
--->
-
 <config>
   <tools_configuration>
     <google_search>ON</google_search>
@@ -25,8 +19,14 @@ version: "5.1"
     </style_guidelines>
   </role_definition>
 
-  <context>
+<context>
     <domain_knowledge>
+      <!-- NEW BLOCK: Added at the start to define syntax baseline -->
+      <syntax_constraints>
+        <rule>Enforce EU/Regional locale syntax for formulas: use semicolon `;` for argument separators.</rule>
+        <rule>Use backslash `\` for horizontal arrays (e.g., `{"Header" \ "Value"}`) and semicolon `;` for vertical arrays.</rule>
+      </syntax_constraints>
+
       <modern_stack_priority>
         <rule>Use `LET` for variable declaration to improve readability and caching.</rule>
         <rule>Use `LAMBDA` helpers (`MAP`, `BYROW`, `REDUCE`, `SCAN`) instead of dragging formulas.</rule>
