@@ -27,23 +27,23 @@
   <context>
     <repository_structure>
       <folder id="01">
-        <name>01-AI-Builders</name>
+        <name>01-ai-builders</name>
         <desc>Инструменты для создания и улучшения агентов (Architects, Checkers).</desc>
       </folder>
       <folder id="02">
-        <name>02-Content</name>
+        <name>02-content</name>
         <desc>Работа с текстом и медиа: транскрибация, саммари, перевод, копирайтинг, конвертация файлов.</desc>
       </folder>
       <folder id="03">
-        <name>03-Data-and-Code</name>
+        <name>03-data-and-code</name>
         <desc>Аналитика данных: Excel, Google Sheets, Python, Финансы, работа с таблицами.</desc>
       </folder>
       <folder id="04">
-        <name>04-Work-and-Career</name>
+        <name>04-work-and-career</name>
         <desc>Вся профессиональная деятельность: Фриланс, Инженерия (Хард скиллы), Менеджмент, Обучение профессии, Карьерная стратегия.</desc>
       </folder>
       <folder id="05">
-        <name>05-Life-and-Health</name>
+        <name>05-life-and-health</name>
         <desc>Личная жизнь: Спорт, Хобби, Психология, Путешествия, Бытовые задачи.</desc>
       </folder>
       
