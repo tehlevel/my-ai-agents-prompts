@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Parser to Markdown</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #f4f4f9; }
+        .container { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
+        button { background-color: #007bff; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin-top: 1rem; }
+        button:hover { background-color: #0056b3; }
+        input { margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Парсер диалога в Markdown</h2>
+    <p>Загрузите исходный файл (.txt или .json)</p>
+    <input type="file" id="fileInput" accept=".txt,.json">
+    <br>
+    <button onclick="processFile()">Преобразовать и скачать .md</button>
+</div>
+
+<script>
+    function processFile() {
+        const fileInput = document.getElementById('fileInput');
+        if (fileInput.files.length === 0) {
+            alert('Пожалуйста, выберите файл');
+            return;
+        }
+
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            try {
+                // Пытаемся распарсить содержимое как JSON
+                const content = e.target.result;
+                // Убираем возможные маркеры начала/конца файла, если они есть вокруг JSON
+                const jsonStr = content.substring(content.indexOf('{'), content.lastIndexOf('}') + 1);
+                const data = JSON.parse(jsonStr);
+
+                let markdownResult = "";
+                
+                if (data.chunkedPrompt && data.chunkedPrompt.chunks) {
+                    data.chunkedPrompt.chunks.forEach(chunk => {
+                        const roleLabel = chunk.role === 'user' ? 'Пользователь' : 'Модель';
+                        let messageText = "";
+
+                        // Если есть массив parts, собираем текст, пропуская мысли (thought)
+                        if (chunk.parts && Array.isArray(chunk.parts)) {
+                            messageText = chunk.parts
+                                .filter(part => !part.thought) // Игнорируем мысли
+                                .map(part => part.text)
+                                .join("");
+                        } else if (chunk.text) {
+                            // Если только поле text и нет флага мысли
+                            if (!chunk.isThought) {
+                                messageText = chunk.text;
+                            }
+                        }
+
+                        if (messageText.trim()) {
+                            markdownResult += `**${roleLabel}**: ${messageText.trim()}\n\n---\n\n`;
+                        }
+                    });
+                }
+
+                if (markdownResult === "") {
+                    alert("Не удалось найти данные диалога в файле.");
+                    return;
+                }
+
+                downloadFile(markdownResult, "dialogue.md");
+
+            } catch (err) {
+                console.error(err);
+                alert('Ошибка при разборе файла. Убедитесь, что это корректный файл экспорта.');
+            }
+        };
+
+        reader.readAsText(file);
+    }
+
+    function downloadFile(content, fileName) {
+        const blob = new Blob([content], { type: 'text/markdown;charset=utf-8;' });
+        const link = document.createElement("a");
+        const url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", fileName);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+</script>
+
+</body>
+</html>
