@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Universal Parser</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #f4f4f9; margin: 0; }
+        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; width: 350px; }
+        input { margin: 20px 0; width: 100%; }
+        button { background-color: #007bff; color: white; border: none; padding: 12px; border-radius: 6px; cursor: pointer; width: 100%; font-size: 16px; }
+        button:hover { background-color: #0056b3; }
+        #log { margin-top: 20px; font-size: 13px; color: #555; text-align: left; max-height: 100px; overflow-y: auto; border-top: 1px solid #eee; padding-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h3>Конвертер в Markdown</h3>
+    <!-- Убрал accept, чтобы видел файлы без расширений -->
+    <input type="file" id="fileInput">
+    <button onclick="convert()">Преобразовать</button>
+    <div id="log"></div>
+</div>
+
+<script>
+    function addLog(msg) {
+        document.getElementById('log').innerHTML += msg + "<br>";
+    }
+
+    function convert() {
+        const fileInput = document.getElementById('fileInput');
+        const logDiv = document.getElementById('log');
+        logDiv.innerHTML = "";
+
+        if (!fileInput.files[0]) {
+            alert("Выберите файл");
+            return;
+        }
+
+        const file = fileInput.files[0];
+        
+        // Логика имени: если точки нет, просто добавляем .md
+        let outName = file.name;
+        if (outName.includes('.')) {
+            outName = outName.substring(0, outName.lastIndexOf('.')) + ".md";
+        } else {
+            outName = outName + ".md";
+        }
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const raw = e.target.result;
+                
+                // Ищем JSON внутри (даже если файл с мусором в начале/конце)
+                const start = Math.min(
+                    raw.indexOf('{') === -1 ? Infinity : raw.indexOf('{'),
+                    raw.indexOf('[') === -1 ? Infinity : raw.indexOf('[')
+                );
+                const end = Math.max(raw.lastIndexOf('}'), raw.lastIndexOf(']'));
+
+                if (start === Infinity || end === -1) {
+                    addLog("❌ Ошибка: В файле не найден JSON-формат.");
+                    return;
+                }
+
+                const jsonStr = raw.substring(start, end + 1);
+                const data = JSON.parse(jsonStr);
+                
+                // Ищем массив сообщений в разных ветках
+                let messages = [];
+                if (data.chunkedPrompt && data.chunkedPrompt.chunks) messages = data.chunkedPrompt.chunks;
+                else if (Array.isArray(data)) messages = data;
+                else if (data.messages) messages = data.messages;
+                else if (data.history) messages = data.history;
+
+                if (messages.length === 0) {
+                    addLog("❌ Сообщения не найдены в структуре.");
+                    return;
+                }
+
+                let resultMd = "";
+                messages.forEach(m => {
+                    let role = (m.role || "Инфо").toLowerCase();
+                    if (role.includes('user') || role.includes('human')) role = "Пользователь";
+                    else if (role.includes('model') || role.includes('assistant')) role = "Модель";
+                    else role = "Система";
+
+                    let text = "";
+                    if (Array.isArray(m.parts)) {
+                        text = m.parts.filter(p => !p.thought && !p.isThought).map(p => p.text || "").join("\n");
+                    } else {
+                        text = m.text || m.content || "";
+                    }
+
+                    if (text.trim()) {
+                        resultMd += `**${role}**:\n${text.trim()}\n\n---\n\n`;
+                    }
+                });
+
+                if (!resultMd) {
+                    addLog("❌ Текст сообщений пуст.");
+                    return;
+                }
+
+                // Скачивание
+                const blob = new Blob([resultMd], { type: 'text/markdown' });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = outName;
+                a.click();
+                addLog("✅ Успешно! Файл сохранен как: " + outName);
+
+            } catch (err) {
+                addLog("❌ Ошибка парсинга: " + err.message);
+                console.error(err);
+            }
+        };
+
+        reader.readAsText(file);
+    }
+</script>
+
+</body>
+</html>
