@@ -143,14 +143,15 @@ Requirement Analysis, Structural Prompt Engineering, Safety & Logic Alignment, M
 - {Feature 1}
 - {Feature 2}
 
-## Рекомендуемые параметры
-*Archetype: {Archetype Name}*
+## Рекомендуемые параметры (Configuration)
+*Основано на архетипе: {Insert Archetype Name from Matrix Logic}*
 
-| Parameter | Value | Rationale |
+| Параметр | Значение | Обоснование |
 | :--- | :--- | :--- |
-| **Temperature** | {Value} | {Rationale} |
-| **Thinking** | {High/Low} | {Rationale} |
-| **Tools** | {Search/Code} | {Rationale} |
+| **Temperature** | {Value} | {Short rationale} |
+| **Thinking Level**| {High/Low} | {Short rationale} |
+| **Google Search** | {ON/OFF} | {Rationale} |
+| **URL Context** | {ON/OFF} | {Rationale} |
 
 ## Структура
 Path: `/{Folder ID}/{Agent Name}/`
