@@ -1,0 +1,116 @@
+{
+  "runSettings": {
+    "temperature": 1.0,
+    "model": "models/gemini-3-pro-preview",
+    "topP": 0.95,
+    "topK": 64,
+    "maxOutputTokens": 65536,
+    "safetySettings": [{
+      "category": "HARM_CATEGORY_HARASSMENT",
+      "threshold": "OFF"
+    }, {
+      "category": "HARM_CATEGORY_HATE_SPEECH",
+      "threshold": "OFF"
+    }, {
+      "category": "HARM_CATEGORY_SEXUALLY_EXPLICIT",
+      "threshold": "OFF"
+    }, {
+      "category": "HARM_CATEGORY_DANGEROUS_CONTENT",
+      "threshold": "OFF"
+    }],
+    "enableCodeExecution": false,
+    "enableSearchAsATool": false,
+    "enableBrowseAsATool": false,
+    "enableAutoFunctionResponse": false,
+    "thinkingBudget": -1,
+    "outputResolution": "1K",
+    "thinkingLevel": "THINKING_HIGH"
+  },
+  "systemInstruction": {
+  },
+  "chunkedPrompt": {
+    "chunks": [{
+      "text": "Некий Юра пишет в домовой чат:\nДобрый день.Уважаемые жильцы, и кому же мешают два ровно припаркованных авто ,на стоянке во дворе ? Отзовитесь\n\nВидимо его авто стояло во дворе в неположенном для парковке месте и кто-то (точно не я) вызвал ГАИ с жалобой на это нарушение.\n\nКак вежливо ответить Юре, попутно заверив его что это не я вызывал ГАИ, что в нашем дворе нет как таковой парковки впринципе, а так как его машина скорее всего стояла еще и на месте газона (сейчас очень много снега и парковка образовалась там где под снегом растет трава), а это прямо запрещено ПДД. То ставя авто так он должен понимать что ГАИ на него может вызвать вообще любой прохожий из-за явного нарушения и он должен принимать этот риск как взрослый и ответственный гражданин.",
+      "role": "user",
+      "tokenCount": 216
+    }, {
+      "text": "**Assessing The Context**\n\nI\u0027m currently focused on the sender, Yura, and the context of the message—a house chat. Understanding this foundation is crucial before moving forward. Yura\u0027s brief message sets the stage, and I am working to define the specific constraints of the prompt, by thinking about who Yura is.\n\n\n**Investigating the Incident**\n\nI\u0027m now diving into the specifics of Yura\u0027s situation, focusing on why he might be upset. The context shifts to a potential traffic violation—parking on a lawn—and the possibility of a fine or towing. I\u0027m carefully formulating the appropriate response to Yura, thinking how to provide clarity and maintain a neutral stance in the group chat. I must be polite and clear about my lack of involvement.\n\n\n**Composing the Response**\n\nI\u0027m now drafting the actual message. I\u0027m considering two primary approaches: a direct, logical \"Spock\" style, and a more polite, \"Good Neighbor\" style. The Spock option focuses on the rules and facts, while the Good Neighbor emphasizes that accusing neighbors isn\u0027t helpful. I\u0027m working to refine both drafts, ensuring clarity and a balanced tone, by thinking about what Yura\u0027s response will be.\n\n\n**Formulating Potential Replies**\n\nI\u0027m now iterating through the drafts, zeroing in on a \"short and dry\" response and a slightly more philosophical one, addressing the core issue of responsibility. I\u0027m also refining Russian phrasings, especially around the \"no parking lot\" issue and clarifying that I didn\u0027t call the authorities. I\u0027m focusing on the risk/adult aspect, to find the most suitable, balanced scripts. I must maintain a tone that\u0027s both clear and neutral.\n\n\n",
+      "role": "model",
+      "isThought": true,
+      "parts": [{
+        "text": "**Assessing The Context**\n\nI\u0027m currently focused on the sender, Yura, and the context of the message—a house chat. Understanding this foundation is crucial before moving forward. Yura\u0027s brief message sets the stage, and I am working to define the specific constraints of the prompt, by thinking about who Yura is.\n\n\n",
+        "thought": true
+      }, {
+        "text": "**Investigating the Incident**\n\nI\u0027m now diving into the specifics of Yura\u0027s situation, focusing on why he might be upset. The context shifts to a potential traffic violation—parking on a lawn—and the possibility of a fine or towing. I\u0027m carefully formulating the appropriate response to Yura, thinking how to provide clarity and maintain a neutral stance in the group chat. I must be polite and clear about my lack of involvement.\n\n\n",
+        "thought": true
+      }, {
+        "text": "**Composing the Response**\n\nI\u0027m now drafting the actual message. I\u0027m considering two primary approaches: a direct, logical \"Spock\" style, and a more polite, \"Good Neighbor\" style. The Spock option focuses on the rules and facts, while the Good Neighbor emphasizes that accusing neighbors isn\u0027t helpful. I\u0027m working to refine both drafts, ensuring clarity and a balanced tone, by thinking about what Yura\u0027s response will be.\n\n\n",
+        "thought": true
+      }, {
+        "text": "**Formulating Potential Replies**\n\nI\u0027m now iterating through the drafts, zeroing in on a \"short and dry\" response and a slightly more philosophical one, addressing the core issue of responsibility. I\u0027m also refining Russian phrasings, especially around the \"no parking lot\" issue and clarifying that I didn\u0027t call the authorities. I\u0027m focusing on the risk/adult aspect, to find the most suitable, balanced scripts. I must maintain a tone that\u0027s both clear and neutral.\n\n\n",
+        "thought": true
+      }]
+    }, {
+      "text": "Вот несколько вариантов ответа: от максимально нейтрального до более прямолинейного. Выбирайте тот, который лучше подходит под общую атмосферу вашего домового чата.\n\n### Вариант 1: Спокойный и аргументированный (Рекомендуемый)\nЭтот вариант вежливо ставит на место, объясняет ситуацию с газоном и снимает с вас подозрения.\n\n\u003e «Юрий, добрый день. Сразу обозначу: ГАИ вызывал не я. Но справедливости ради стоит заметить, что официальной парковки у нас во дворе как таковой нет.\n\u003e\n\u003e Скорее всего, машины стояли в зоне зеленых насаждений. То, что сейчас лежит снег, не отменяет ПДД и статуса газона. На такое нарушение ГАИ может вызвать абсолютно любой прохожий, которому машины помешали пройти, а не обязательно кто-то из соседей. Оставляя авто в неположенном месте, нужно понимать, что это риск, и быть готовым нести за него ответственность».\n\n### Вариант 2: Дипломатичный и «соседский»\nМенее формальный, акцент на том, что не стоит искать врагов среди своих.\n\n\u003e «Добрый день. Юрий, не стоит искать виноватых в чате (это был не я). Давайте смотреть правде в глаза: то, что мы по привычке называем парковкой, по документам — газон или тротуар. Снег растает — будет грязь.\n\u003e\n\u003e Сейчас очень активно работают приложения по фиксации нарушений, поэтому вызвать службу мог любой человек, просто проходивший мимо дома. Когда мы паркуемся не по правилам, мы, к сожалению, всегда принимаем этот риск на себя».\n\n### Вариант 3: Краткий и по существу\nЕсли не хотите вступать в долгую полемику.\n\n\u003e «Юрий, здравствуйте. Я заявку не оставлял, но ситуация предсказуемая. У нас во дворе нет выделенных парковочных карманов, по факту машины стояли на газоне/зеленой зоне. Это прямое нарушение ПДД вне зависимости от того, ровно стоит авто или нет. Жалобу мог отправить любой случайный прохожий. Тут уж как повезет — это зона ответственности владельца авто».\n\n### Памятка перед отправкой:\nУчитывая, что Юра уже «на взводе», любой ответ (даже самый вежливый), указывающий на его неправоту, может вызвать у него агрессию. Будьте готовы к тому, что он может огрызнуться в стиле «самый умный нашелся». Главное — сохраняйте спокойствие и не переходите на личности. Ваша позиция выигрышная и с точки зрения закона, и с точки зрения логики.",
+      "role": "model",
+      "finishReason": "STOP",
+      "tokenCount": 616,
+      "parts": [{
+        "text": "Вот несколько вариантов ответа: от максимально нейтрального до более прямолинейного. Выбирайте тот, который лучше подходит под общую атмосферу вашего"
+      }, {
+        "text": " домового чата.\n\n### Вариант 1: Спокойный и аргументированный (Рекомендуемый)\n"
+      }, {
+        "text": "Этот вариант вежливо ставит на место, объясняет ситуацию с газоном и снимает с вас подозрения.\n\n\u003e «"
+      }, {
+        "text": "Юрий, добрый день. Сразу обозначу: ГАИ вызывал не я. Но справедливости ради стоит"
+      }, {
+        "text": " заметить, что официальной парковки у нас во дворе как таковой нет.\n\u003e\n\u003e Скорее всего, машины"
+      }, {
+        "text": " стояли в зоне зеленых насаждений. То, что сейчас лежит снег, не отменяет ПДД и"
+      }, {
+        "text": " статуса газона. На такое нарушение ГАИ может вызвать абсолютно любой прохожий, которому машины помешали пройти, а"
+      }, {
+        "text": " не обязательно кто-то из соседей. Оставляя авто в неположенном месте, нужно понимать, что это риск, и"
+      }, {
+        "text": " быть готовым нести за него ответственность».\n\n### Вариант 2: Дипломатичный и «со"
+      }, {
+        "text": "седский»\nМенее формальный, акцент на том, что не стоит искать врагов среди своих.\n\n\u003e «"
+      }, {
+        "text": "Добрый день. Юрий, не стоит искать виноватых в чате (это был не я). Давайте смотреть правде в глаза:"
+      }, {
+        "text": " то, что мы по привычке называем парковкой, по документам — газон или тротуар. С"
+      }, {
+        "text": "нег растает — будет грязь.\n\u003e\n\u003e Сейчас очень активно работают приложения по фиксации нарушений"
+      }, {
+        "text": ", поэтому вызвать службу мог любой человек, просто проходивший мимо дома. Когда мы паркуемся не по правилам, мы"
+      }, {
+        "text": ", к сожалению, всегда принимаем этот риск на себя».\n\n### Вариант 3: Краткий и по"
+      }, {
+        "text": " существу\nЕсли не хотите вступать в долгую полемику.\n\n\u003e «Юрий, здравствуйте"
+      }, {
+        "text": ". Я заявку не оставлял, но ситуация предсказуемая. У нас во дворе нет выделенных парковочных кар"
+      }, {
+        "text": "манов, по факту машины стояли на газоне/зеленой зоне. Это прямое нарушение ПДД вне"
+      }, {
+        "text": " зависимости от того, ровно стоит авто или нет. Жалобу мог отправить любой случайный прохожий. Тут"
+      }, {
+        "text": " уж как повезет — это зона ответственности владельца авто».\n\n### Памятка перед отправкой:\n"
+      }, {
+        "text": "Учитывая, что Юра уже «на взводе», любой ответ (даже самый вежливый),"
+      }, {
+        "text": " указывающий на его неправоту, может вызвать у него агрессию. Будьте готовы к тому, что он"
+      }, {
+        "text": " может огрызнуться в стиле «самый умный нашелся». Главное — сохраняйте спокойствие и не пере"
+      }, {
+        "text": "ходите на личности. Ваша позиция выигрышная и с точки зрения закона, и с точки зрения логики."
+      }, {
+        "text": "",
+        "thoughtSignature": "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"
+      }]
+    }],
+    "pendingInputs": [{
+      "text": "",
+      "role": "user"
+    }]
+  }
+}
