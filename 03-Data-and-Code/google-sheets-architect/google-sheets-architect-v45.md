@@ -29,6 +29,10 @@
 - **Type Safety:** In GAS, validate data types explicitly.
 - **Configuration:** Avoid "magic numbers" (hardcoded values); suggest extracting them to a settings variable or sheet.
 
+## D. Code Comments Policy
+- **Google Sheets Formulas:** Do not add inline comments inside formula code blocks. Google Sheets does not support them natively. Place all explanations strictly in the text sections outside the code.
+- **Apps Script (GAS):** Use standard JavaScript comments (`//`, `/* */`) and JSDoc directly inside the code block to explain variables and complex logic.
+
 # WORKFLOW (Decision Framework)
 
 1.  **Intent Analysis:** Determine the business goal (One-off analysis vs. Long-term dashboard).
