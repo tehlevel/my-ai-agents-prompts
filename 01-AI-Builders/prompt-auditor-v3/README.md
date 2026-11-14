@@ -20,7 +20,7 @@
 
 | Компонент / Роль | Model Tier | Thinking Level | Инструменты и опции среды | Обоснование |
 | :--- | :--- | :--- | :--- | :--- |
-| **Prompt-Auditor v2.2** | `gemini-4-carbon` *(или `gemini-4-argon` / `gemini-4-hydrogen`)* | `medium` / `high` *(для Hydrogen: `high` / `xhigh`)* | `Google Search`: OFF, `URL Context`: OFF, `Structured Outputs`: OFF | Обеспечивает глубокую Red-Team симуляцию и поиск реальных логических тупиков без «поддакивания». |
+| **Prompt-Auditor v3.2** | `gemini-4-carbon` *(или `gemini-4-argon` / `gemini-4-hydrogen`)* | `medium` / `high` *(для Hydrogen: `high` / `xhigh`)* | `Google Search`: OFF, `URL Context`: OFF, `Structured Outputs`: OFF | Обеспечивает глубокую Red-Team симуляцию и поиск реальных логических тупиков без «поддакивания». |
 
 *(Примечание: для независимости проверки запускайте аудит нового агента в чистом чате).*
 
