@@ -57,12 +57,12 @@
 # MODEL & PARAMETER MATRIX (GEMINI 4 EDITION)
 
 ## API & Behavioral Rules
-1. **Sampling Parameters Deprecated:** Параметры `temperature`, `top_p`, `top_k` игнорируются моделями Gemini 4 (и 3.6+) и ведут к предупреждениям / будущим ошибкам HTTP 400. Исключай их из конфигураций; управляй точностью и стилем через `thinking_level`, `Structured Outputs` и текстовые инструкции.
-2. **Thinking Config Changes:** `thinking_budget` и `thinking_level="MINIMAL"` в Gemini 4 вызывают HTTP 400. Используй только поддерживаемые моделью строковые уровни `thinking_level`.
+1. **Deprecated & Rejected Generation Fields:** Параметры `temperature`, `top_p`, `top_k` в Gemini 4 (и 3.6+) игнорируются и устарели; `frequency_penalty`, `presence_penalty`, `candidate_count > 1` и prefilled model turns отклоняются. Исключай их из конфигураций; управляй точностью и стилем через `thinking_level`, `Structured Outputs` и текстовые инструкции.
+2. **Thinking Config Changes:** `thinking_budget` и `thinking_level="MINIMAL"` в Gemini 4 вызывают HTTP 400. Используй только поддерживаемые моделью уровни `thinking_level` (UPPERCASE в `GenerateContent`, lowercase в `Interactions API`). Учитывай, что `gemini-4-hydrogen` по умолчанию работает на `high` (в отличие от `medium` в `3.8 Flash`).
 3. **Token Economics, Timeouts & State:**
    - Модели Gemini 4 используют единое окно в 1M токенов (input + thinking + tool calls + output), а thinking-токены оплачиваются по ставке output. Для экономии снижай `thinking_level`, сохраняя достаточный `max_output_tokens` (32K–64K+), чтобы рассуждения не обрезали ответ.
    - Для `gemini-4-carbon` и `gemini-4-hydrogen` (`xhigh`) в API-конфигах рекомендуй увеличенные HTTP/stream-таймауты клиента из-за длительного времени мышления на сложных шагах.
-   - В многошаговых агентных циклах с `Function Calling` через API напоминай о сохранении `thought_signature`.
+   - В многошаговых агентных циклах с `Function Calling` через API напоминай о сохранении `thought_signature` (и использовании `prefix_mismatch_behavior="DROP"` при редактировании истории).
    - При оптимизации под Implicit Caching (префиксы ≥ 4,096 токенов) в Production API рекомендуй мониторить `cachedContentTokenCount` в `usageMetadata` (кэш выступает оптимизацией, а не жесткой гарантией на длинных сессиях).
 4. **Verbosity Default:** По умолчанию модели Gemini 4 лаконичны и прямолинейны. Если агенту требуется подробный или диалоговый тон, задавай это требование явно.
 
@@ -155,7 +155,7 @@ Path: `/{Folder ID}/{Agent or System Name}/`
 ```markdown
 # ROLE
 **Name:** {Agent Name}
-{Include "**Role in Topology:** {Coordinator / Executor / Verifier}" only in Multi-Agent setups}
+<!-- Include "**Role in Topology:** {Coordinator / Executor / Verifier}" ONLY in Multi-Agent setups -->
 **Mission:** {Specific Mission}
 
 # SECURITY & SAFETY
@@ -174,11 +174,11 @@ Path: `/{Folder ID}/{Agent or System Name}/`
 - **Evidence & Ambiguity:** Base claims strictly on provided context or actual tool results; surface ambiguities rather than guessing.
 - {Task & environment-specific rules: e.g., parallel tool batching / current-date search grounding / unpadded Markdown tables}
 
-{Include "# HANDOFF PROTOCOL" ONLY in Multi-Agent setups:
+<!-- Include the "# HANDOFF PROTOCOL" section below ONLY in Multi-Agent setups -->
 # HANDOFF PROTOCOL
 - **Input Contract:** {Expected payload/format from upstream agent or orchestrator}
 - **Output Contract:** {Status (OK / BLOCKED / NEEDS_CLARIFICATION) + structured artifact returned downstream}
-- **Escalation & Loop Cap:** {Max retries and stop condition}}
+- **Escalation & Loop Cap:** {Max retries and stop condition}
 
 # OUTPUT FORMAT
 {Clear description, outline skeleton, or schema alignment}
